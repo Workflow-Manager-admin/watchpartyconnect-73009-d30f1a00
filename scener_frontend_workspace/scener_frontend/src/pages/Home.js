@@ -8,29 +8,32 @@ import CreateAccountModal from "./CreateAccountModal";
 import ScheduleWatchPartyModal from "./ScheduleWatchPartyModal";
 import StreamingServiceModal from "./StreamingServiceModal";
 import AfterSchedulingModal from "./AfterSchedulingModal";
+import HomeOnScroll from "./HomeOnScroll";
 
 // PUBLIC_INTERFACE
 // Full integration Home page exposing all entry-points (profile states, modals, dashboard, flows)
 export default function Home({ onOpenSignUp }) {
-  // Local modals/routes for demo user flow
+  // State for all modal/screen entry-points according to all requirement markdowns
   const [showLogin, setShowLogin] = useState(false);
   const [showCreate, setShowCreate] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [showProfileScheduled, setShowProfileScheduled] = useState(false);
+  const [showHomeOnScroll, setShowHomeOnScroll] = useState(false);
 
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [showStreamingModal, setShowStreamingModal] = useState(false);
   const [showAfterScheduling, setShowAfterScheduling] = useState(false);
 
-  // Demo party details (simulate scheduling → after schedule state)
+  // Party details for after scheduling/profile after scheduling
   const [partyDetails, setPartyDetails] = useState({
     title: "Barbie (2023)",
     date: "May 4, 2024",
     time: "8:00pm",
-    image: null
+    image: null,
+    service: undefined
   });
 
-  // Sequential flow functions for "Schedule a Watch Party"
+  // Modal/modal-stack flows
   const beginScheduleFlow = () => setShowScheduleModal(true);
 
   const handleScheduleComplete = (partyInfo) => {
@@ -48,37 +51,71 @@ export default function Home({ onOpenSignUp }) {
     setTimeout(() => setShowProfileScheduled(true), 180);
   };
 
-  // Modal controls for authentication
-  // Sign Up or Login triggers
+  // Entrypoint controls for Auth
   const openSignUpModal = () => setShowCreate(true);
   const openLoginModal = () => setShowLogin(true);
 
-  // "Profile" and "Scheduled Profile" for dashboard demo/journey
+  // Entrypoint flows for dashboard/profile/scheduled state (per design)
   const openProfilePage = () => setShowProfile(true);
   const openProfileAfterSchedulingPage = () => setShowProfileScheduled(true);
 
-  // Main Home UI, always showing nav + hero + footer
-  // <-- Modal stack: overlays above Home below as needed -->
-  return (
-    <>
-      {/* 1. All vertical modal states */}
-      {showLogin && <PostLoginModal open={showLogin} onClose={() => setShowLogin(false)} onSwitchSignUp={openSignUpModal} />}
-      {showCreate && <CreateAccountModal open={showCreate} onClose={() => setShowCreate(false)} onSwitchLogin={openLoginModal} />}
-      {showScheduleModal && (
+  // Entry to alternate Home page with scrolled-header (per design notes)
+  const openHomeOnScroll = () => setShowHomeOnScroll(true);
+
+  // Stack modals/screens: each is overlaid, modal stacking respected, and all flows surfaced
+  if (showLogin)
+    return (
+      <>
+        <Home onOpenSignUp={openSignUpModal} />
+        <PostLoginModal
+          open={showLogin}
+          onClose={() => setShowLogin(false)}
+          onSwitchSignUp={openSignUpModal}
+        />
+      </>
+    );
+
+  if (showCreate)
+    return (
+      <>
+        <Home onOpenSignUp={openSignUpModal} />
+        <CreateAccountModal
+          open={showCreate}
+          onClose={() => setShowCreate(false)}
+          onSwitchLogin={openLoginModal}
+        />
+      </>
+    );
+
+  // Scheduling + streaming service + after scheduling modal/stacked
+  if (showScheduleModal)
+    return (
+      <>
+        <AccountProfile onScheduleWatchParty={beginScheduleFlow} />
         <ScheduleWatchPartyModal
           open={showScheduleModal}
           onClose={() => setShowScheduleModal(false)}
           onComplete={handleScheduleComplete}
         />
-      )}
-      {showStreamingModal && (
+      </>
+    );
+
+  if (showStreamingModal)
+    return (
+      <>
+        <AccountProfile onScheduleWatchParty={beginScheduleFlow} />
         <StreamingServiceModal
           open={showStreamingModal}
           onClose={() => setShowStreamingModal(false)}
           onSubmit={handleStreamingServiceSubmit}
         />
-      )}
-      {showAfterScheduling && (
+      </>
+    );
+
+  if (showAfterScheduling)
+    return (
+      <>
+        <AccountProfile onScheduleWatchParty={beginScheduleFlow} />
         <AfterSchedulingModal
           open={showAfterScheduling}
           onClose={handleAfterSchedulingDone}
@@ -88,25 +125,38 @@ export default function Home({ onOpenSignUp }) {
           }}
           party={partyDetails}
         />
-      )}
-      {/* Full-page overlays for profile/dashboard journeys */}
-      {showProfile && (
-        <AccountProfile onScheduleWatchParty={beginScheduleFlow} />
-      )}
-      {showProfileScheduled && (
-        <ProfileAfterScheduling
-          party={partyDetails}
-          onEditParty={beginScheduleFlow}
-          onShowSchedule={beginScheduleFlow}
-        />
-      )}
+      </>
+    );
 
-      {/* Main Home page content */}
+  if (showProfileScheduled)
+    return (
+      <ProfileAfterScheduling
+        party={partyDetails}
+        onEditParty={beginScheduleFlow}
+        onShowSchedule={beginScheduleFlow}
+      />
+    );
+
+  if (showProfile)
+    return (
+      <AccountProfile onScheduleWatchParty={beginScheduleFlow} />
+    );
+
+  // Show the "on scroll" Home/Promo as separate route/modal overlay, per design
+  if (showHomeOnScroll)
+    return (
+      <HomeOnScroll onOpenSignUp={openSignUpModal} />
+    );
+
+  // Default: Surface all flows and navigation links, per design audit
+  return (
+    <>
+      {/* 1. Modal stack – make ALL flows available to open, NO missing modal/route */}
+      {/* Main Home page shell */}
       <div className="home-bg">
-        {/* NAV: Scener brand + nav links + CTA */}
+        {/* NAVIGATION BAR (left logo, all required nav links, CTA, states as per all design specs) */}
         <nav className="scener-navbar">
           <div className="nav-left">
-            {/* Logo SVG or fallback text */}
             <span aria-label="Scener logo" className="nav-brand" tabIndex={0}>
               <span style={{ fontWeight: 900, letterSpacing: "1px", marginRight: 7, fontSize: "1.7rem" }}>●</span>
               scener
@@ -116,15 +166,27 @@ export default function Home({ onOpenSignUp }) {
             <a href="#premium">Premium</a>
             <a href="#about">About</a>
             <a href="#faq">FAQ</a>
-            {/* Key journey links: */}
-            <a href="#profile" onClick={e => { e.preventDefault(); openProfilePage(); }}>Profile</a>
-            <a href="#mydashboard" onClick={e => { e.preventDefault(); openProfileAfterSchedulingPage(); }}>Dashboard</a>
+            {/* Design-specified/journey links */}
+            <a href="#profile"
+              onClick={e => { e.preventDefault(); openProfilePage(); }}>
+              Profile
+            </a>
+            <a href="#dashboard"
+              onClick={e => { e.preventDefault(); openProfileAfterSchedulingPage(); }}>
+              Dashboard
+            </a>
+            {/* On-scroll Alt Home */}
+            <a href="#premium-banner"
+              onClick={e => { e.preventDefault(); openHomeOnScroll(); }}>
+              Premium Banner
+            </a>
           </div>
           <div className="nav-right">
+            {/* CTA: Schedule, Sign In, Sign Up */}
             <Button
               className="cta-btn"
               variant="cta"
-              aria-label="Get Started"
+              aria-label="Schedule a Watch Party"
               tabIndex={0}
               style={{ marginRight: 18 }}
               onClick={beginScheduleFlow}
@@ -149,7 +211,7 @@ export default function Home({ onOpenSignUp }) {
           </div>
         </nav>
 
-        {/* MAIN/HERO SECTION */}
+        {/* HERO/Main Section - Center UI */}
         <main className="main-hero-section">
           <div className="hero-left">
             <div className="laptop-mockup" aria-label="Laptop mockup - Scener watch party UI">
@@ -188,7 +250,7 @@ export default function Home({ onOpenSignUp }) {
               </div>
             </div>
           </div>
-          {/* Hero right: Headline, description, CTAs & design-driven flows */}
+          {/* HERO right section with all primary CTAs + routes */}
           <div className="hero-right">
             <div className="hero-headline">
               Virtual watch parties, made <span style={{ color: "var(--button-cta)" }}>easy</span>
@@ -200,6 +262,7 @@ export default function Home({ onOpenSignUp }) {
               Scener lets you host, join, and chat in perfectly synced streaming parties.<br />
               Enjoy TV, movies, and more—together, with no hassle.
             </div>
+            {/* CTA row - all core flows per audit */}
             <div className="hero-button-row">
               <Button
                 className="cta-btn"
@@ -225,6 +288,14 @@ export default function Home({ onOpenSignUp }) {
               >
                 Dashboard
               </Button>
+              <Button
+                className="cta-btn"
+                variant="secondary"
+                style={{ minWidth: 152, marginLeft: 10 }}
+                onClick={openHomeOnScroll}
+              >
+                Premium Benefits
+              </Button>
             </div>
             <div style={{ marginTop: 12 }}>
               <Button
@@ -240,10 +311,18 @@ export default function Home({ onOpenSignUp }) {
               >
                 Sign Up
               </Button>
+              <Button
+                variant="secondary"
+                style={{ marginLeft: 10 }}
+                onClick={beginScheduleFlow}
+              >
+                Watch Party Workflow
+              </Button>
             </div>
           </div>
         </main>
-        {/* LOGO/BRAND FOOTER STRIP */}
+
+        {/* Footer logo bar */}
         <footer className="logo-footer" aria-label="Supported streaming services">
           <div className="logo-footer-inner">
             {/* SVG or img for actual brand logos; fallback text for demo */}
@@ -258,6 +337,9 @@ export default function Home({ onOpenSignUp }) {
             </div>
             <div className="footer-logo-item" aria-label="HBO logo">
               <svg width="49" height="27"><rect width="49" height="27" fill="var(--logo-gray)" rx="7" /><text x="6" y="19" fontFamily="sans-serif" fontWeight="bold" fontSize="14" fill="#fff" opacity="0.78">HBO</text></svg>
+            </div>
+            <div className="footer-logo-item" aria-label="Prime Video logo">
+              <svg width="74" height="27"><rect width="74" height="27" fill="var(--logo-gray)" rx="7" /><text x="7" y="19" fontFamily="sans-serif" fontWeight="bold" fontSize="13" fill="#fff" opacity="0.78">Prime Video</text></svg>
             </div>
           </div>
         </footer>
