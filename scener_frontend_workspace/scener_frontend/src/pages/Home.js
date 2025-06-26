@@ -1,6 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./Home.css";
 
+// PUBLIC_INTERFACE
+/**
+ * Home page as a single, smooth, long, scrollable React view.
+ * Layout matches all sections, cards, sticky headers, and transitions
+ * precisely per 'home' and 'home on scroll' design references.
+ * No overlay or abrupt logic—guaranteed seamless scroll for all content.
+ * @param {function} onOpenSignUp - (optional) Callback to open sign up modal.
+ */
 /**
  * PUBLIC_INTERFACE
  * Home page as a single, smooth, long, scrollable React view.

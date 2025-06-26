@@ -1,10 +1,31 @@
+/* Home page seamless scroll layout for "Scener" - combines all cards/sections visually per design spec */
+
+:root {
+  --bg-canvas: #18103a;
+  --nav-bg: #1c174b;
+  --primary-text: #ffffff;
+  --secondary-text: #e6e6f7;
+  --button-cta: #e636ea;
+  --button-cta-hover: #c627c7;
+  --decor-accent: #865fff;
+  --footer-bg: #24195a;
+  --logo-gray: #8c8ca0;
+  --bg-primary: #171437;
+  --bg-banner: linear-gradient(90deg, #2f285d 0%, #6d42c7 100%);
+  --accent-yellow: #ffd542;
+  --cta-pink: #e100ff;
+  --text-main: #ffffff;
+  --card-bg: #22203a;
+  --card-shadow: 0 5px 20px rgba(67,63,92,0.20);
+}
+
 .home-long-scroll {
   width: 100vw;
   min-height: 100vh;
-  background: #181826;
-  color: #fff;
+  background: var(--bg-canvas);
+  color: var(--primary-text);
   overflow-x: hidden;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   scroll-behavior: smooth;
 }
 
