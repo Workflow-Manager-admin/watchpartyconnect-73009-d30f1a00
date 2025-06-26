@@ -1,0 +1,40 @@
+.scener-btn {
+  font-family: var(--scener-font-main, "Helvetica Neue", Arial, sans-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  outline: none;
+  box-shadow: 0 3px 16px #0002;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: all 0.17s cubic-bezier(.4,1,.6,1);
+  letter-spacing: .03em;
+  background: var(--home-btn-cta, #e636ea);
+  color: #fff;
+  margin: 2px 0;
+  display: inline-block;
+  user-select: none;
+}
+.scener-btn-cta {
+  background: linear-gradient(93deg, var(--home-btn-cta,#e636ea) 60%, var(--home-accent-purple,#865fff) 100%);
+  color: #fff;
+}
+.scener-btn-primary {
+  background: var(--profile-accent, #a259ff);
+  color: #fff;
+}
+.scener-btn-secondary, .scener-btn-outlined {
+  background: transparent;
+  color: var(--profile-accent, #a259ff);
+  border: 2.1px solid var(--profile-accent, #a259ff);
+}
+.scener-btn:focus, .scener-btn:active { outline: 2px solid var(--profile-accent, #a259ff); }
+.scener-btn:hover, .scener-btn:focus-visible {
+  filter: brightness(1.08) drop-shadow(0 3px 18px #e636ea44);
+  background: linear-gradient(93deg, var(--home-btn-cta-hover,#c627c7) 55%, var(--home-accent-purple,#865fff) 100%);
+}
+.scener-btn-secondary:hover, .scener-btn-outlined:hover {
+  color: #fff;
+  background: var(--profile-accent, #a259ff);
+}

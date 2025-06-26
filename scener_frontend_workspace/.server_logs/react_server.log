@@ -25,3 +25,6 @@ src/App.js
   Line 38:17:  'setTheme' is assigned a value but never used  no-unused-vars
 
 webpack compiled with 1 warning
+Compiling...
+Compiled successfully!
+webpack compiled successfully

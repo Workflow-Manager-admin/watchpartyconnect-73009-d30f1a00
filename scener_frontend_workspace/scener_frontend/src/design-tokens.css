@@ -1,0 +1,51 @@
+:root {
+  /* Home/Main */
+  --scener-font-main: "Helvetica Neue", Arial, sans-serif;
+  --home-bg-primary: #18103a;
+  --home-nav-bg: #1c174b;
+  --home-primary-text: #ffffff;
+  --home-secondary-text: #e6e6f7;
+  --home-btn-cta: #e636ea;
+  --home-btn-cta-hover: #c627c7;
+  --home-accent-purple: #865fff;
+  --home-footer-bg: #24195a;
+  --home-logo-gray: #8c8ca0;
+
+  /* Home Page (on scroll) additions */
+  --onScroll-header: #171437;
+  --onScroll-banner-grad: linear-gradient(90deg, #2f285d 0%, #6d42c7 100%);
+  --onScroll-accent-gold: #ffd542;
+  --onScroll-cta-pink: #e100ff;
+  --onScroll-text-main: #ffffff;
+  --onScroll-card-bg: #22203a;
+  --onScroll-shadow: 0 5px 20px rgba(67,63,92,0.20);
+
+  /* Account profile */
+  --profile-bg-canvas: #18162b;
+  --profile-surface-1: #221e3a;
+  --profile-surface-2: #19162d;
+  --profile-text-primary: #ffffff;
+  --profile-text-secondary: #b3aadb;
+  --profile-accent: #a259ff;
+  --profile-accent-light: #ede3ff;
+  --profile-divider: #272347;
+  --profile-avatar-bg: #6d5dac;
+
+  /* Create Account Modal */
+  --account-bg-modal: #2d006d;
+  --account-input-bg: #381C6C;
+  --account-input-placeholder: #d0cce2;
+  --account-btn-grad: linear-gradient(90deg, #bb4ae5 0%, #7000ff 100%);
+  --account-btn-text: #fff;
+  --account-link: #b18fff;
+  --account-muted: #d0cce2;
+
+  /* Post-login/modal */
+  --modal-bg: #2A0757;
+  --modal-bg-overlay: #1B0042;
+  --modal-card-bg: #2A0757;
+  --modal-accent: #D000FF;
+  --modal-input-bg: #22094D;
+  --modal-text: #FFFFFF;
+  --modal-text-secondary: #B99FE0;
+}

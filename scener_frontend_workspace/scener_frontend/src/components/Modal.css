@@ -1,0 +1,34 @@
+@import "../design-tokens.css";
+.body-overlay-bg { /* overlay from utilities.css */ }
+
+.scener-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--account-bg-modal, #2d006d);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.5);
+  padding: 40px 40px 32px 40px;
+  margin: auto;
+  position: relative;
+  z-index: 1011;
+  min-width: 295px;
+  outline: 0;
+}
+@media (max-width: 540px) {
+  .scener-modal { padding: 18px 8vw; }
+}
+.modal-close-btn {
+  position: absolute;
+  top: 18px; right: 25px;
+  background: none;
+  border: none;
+  font-size: 2.1rem;
+  color: var(--modal-text, #ffffff);
+  cursor: pointer;
+  outline: none;
+  z-index: 5;
+  opacity: .63;
+  transition: color .14s;
+}
+.modal-close-btn:hover, .modal-close-btn:focus { color: var(--account-btn-text,#fff); opacity: 1; }
