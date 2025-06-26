@@ -1,2 +1,34 @@
 @import "../App.css";
-/* Additional home-specific styles may go here */
+@import "./HomeOnScroll.css";
+
+/* Home.js attaches all state styles here for pixel-perfect state and on-scroll transitions */
+
+/* .onScroll-header, .onScroll-banner, .oss-card-row etc. imported from HomeOnScroll.css */
+
+/* Extra state logic is handled in Home.js for toggling these classes and layouts. */
+
+/* If needed, additional overrides for merged home/scroll styling: */
+
+/* Ensure .onScroll-bg has dark background and resets padding when overlaid on home-bg */
+.onScroll-bg.home-bg {
+  background: linear-gradient(120deg, var(--bg-primary, #171437) 80%, var(--onScroll-accent-gold, #ffd542) 120%);
+  min-height: 100vh;
+  font-family: var(--scener-font-main, "Helvetica Neue", Arial, sans-serif);
+}
+
+/* Remove margin-top from .main-hero-section if in scrolled state, since .onScroll-banner has its own margin */
+.home-bg .onScroll-banner {
+  margin-bottom: 0;
+  margin-top: 70px; /* matches fixed header height for perfect stack */
+}
+
+/* Fix for when logo-footer is reused on both variants */
+.logo-footer.onScroll {
+  background: var(--onScroll-header, #171437);
+  margin-top: 40px;
+}
+
+/* Subtle shadow under transitions for banner/header switch */
+.onScroll-header, .scener-navbar {
+  transition: box-shadow 0.19s, background 0.16s;
+}
