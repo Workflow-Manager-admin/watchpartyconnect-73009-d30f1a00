@@ -3,7 +3,6 @@ import Home from "./pages/Home";
 import PostLoginModal from "./pages/PostLoginModal";
 import CreateAccountModal from "./pages/CreateAccountModal";
 import AccountProfile from "./pages/AccountProfile";
-import HomeOnScroll from "./pages/HomeOnScroll";
 import ScheduleWatchPartyModal from "./pages/ScheduleWatchPartyModal";
 import StreamingServiceModal from "./pages/StreamingServiceModal";
 import AfterSchedulingModal from "./pages/AfterSchedulingModal";
@@ -148,8 +147,6 @@ function App() {
           onScheduleWatchParty={() => setShowScheduleModal(true)}
         />
       );
-    case "scroll":
-      return <HomeOnScroll onOpenSignUp={() => setShowCreate(true)} />;
     case "after-schedule":
       return (
         <ProfileAfterScheduling
