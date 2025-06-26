@@ -1,0 +1,328 @@
+.swp-bg-blur {
+  position: fixed;
+  z-index: 2010;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(35, 20, 91, 0.92);
+  backdrop-filter: blur(13px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swp-modal-card {
+  background: linear-gradient(180deg, #23145b 0%, #2f185b 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 38px 0 rgba(0,0,0,0.55);
+  padding: 32px 32px 28px 32px;
+  min-width: 275px;
+  width: 400px;
+  max-width: 97vw;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  outline: none;
+}
+@media (max-width: 500px) {
+  .swp-modal-card {
+    width: 94vw;
+    padding: 18px 4vw 20px 4vw;
+    min-width: 0;
+  }
+  .swp-modal-header { font-size: 1.08rem !important; }
+}
+
+/* Modal Close (X) */
+.swp-modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 2.3rem;
+  color: var(--primary-text, #fff);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  z-index: 11;
+  transition: color .13s, background .13s;
+  opacity: 0.67;
+}
+.swp-modal-close-btn:hover,
+.swp-modal-close-btn:focus {
+  color: #e55aff;
+  background: #1c102f44;
+  opacity: 1;
+}
+
+/* Header */
+.swp-modal-header {
+  font-family: var(--scener-font-main, "Helvetica Neue", Arial, sans-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 32px;
+  margin-top: 6px;
+  letter-spacing: 0.007em;
+  word-break: break-word;
+}
+.swp-header-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+/* Avatar (top of modal) */
+.swp-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7px;
+  width: 100%;
+}
+.swp-avatar-circle {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(170deg, #6b52d3 60%, #e55aff 100%);
+  border-radius: 50%;
+  box-shadow: 0 2px 16px #e55aff17, 0 6px 23px #23145b38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+  border: 3.5px solid #30205e;
+}
+
+/* Fields */
+.swp-modal-fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 0;
+  margin-top: 2px;
+}
+
+.swp-input-outer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: var(--input-bg,#30205e);
+  border-radius: 8px;
+  position: relative;
+  transition: box-shadow .1s, border .15s;
+}
+.swp-modal-input {
+  flex: 1 1 0;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 43px 12px 15px;
+  font-size: 16px;
+  color: #fff;
+  font-family: var(--scener-font-main, "Helvetica Neue", Arial, sans-serif);
+  font-weight: 400;
+  outline: none;
+  box-shadow: none;
+  transition: background .12s;
+  height: 44px;
+  min-width: 0;
+}
+.swp-modal-input:focus {
+  background: #372361;
+  box-shadow: 0 0 0 2.5px #e55aff;
+}
+.swp-modal-input::placeholder {
+  color: #ccc;
+  opacity: 0.91;
+  font-weight: 400;
+}
+
+.swp-input-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.82;
+  display: flex;
+  align-items: center;
+}
+
+/* Error state */
+.swp-modal-input-error input,
+.swp-modal-input-error .swp-modal-input {
+  border: 1px solid #e55aff !important;
+  box-shadow: 0 0 0 2px #e55aff !important;
+}
+
+/* Go back link and action links */
+.swp-link {
+  color: #fff;
+  text-decoration: underline;
+  letter-spacing: 0em;
+  font-size: 15px;
+  transition: color .16s, text-decoration 0.13s;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.swp-link:hover,
+.swp-link:focus {
+  color: #e55aff;
+  text-decoration: underline;
+}
+
+/* Title edit (step 3) */
+.swp-edit-title-btn,
+.swp-save-title-btn,
+.swp-cancel-title-btn {
+  background: none;
+  border: none;
+  color: #e55aff;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  padding: 4px 8px;
+  cursor: pointer;
+  margin-left: 1px;
+  opacity: 0.72;
+  transition: background .13s, color .15s, opacity .1s;
+  outline: none;
+}
+.swp-edit-title-btn:hover,
+.swp-save-title-btn:hover,
+.swp-cancel-title-btn:hover,
+.swp-edit-title-btn:focus,
+.swp-save-title-btn:focus,
+.swp-cancel-title-btn:focus {
+  color: #fff;
+  background: #8d4ded44;
+  opacity: 1;
+}
+.swp-title-edit-input {
+  border: none;
+  border-radius: 7px;
+  padding: 5px 12px;
+  min-width: 77px;
+  font-size: 1.18rem;
+  font-weight: 600;
+  background: #372361;
+  color: #fff;
+}
+.swp-title-edit-input:focus {
+  outline: 2px solid #e55aff;
+}
+
+/* Privacy section */
+.swp-privacy-label {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 11px;
+  margin-top: 7px;
+}
+.swp-privacy-tiles {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.swp-privacy-tile {
+  display: flex;
+  align-items: center;
+  border-radius: 33px;
+  background: #30205e;
+  height: 56px;
+  padding: 0 20px;
+  width: 100%;
+  border: none;
+  box-shadow: 0 2px 12px #15102a0d;
+  margin-bottom: 0;
+  transition: border .13s, background .16s, box-shadow .18s;
+  font-family: var(--scener-font-main, "Helvetica Neue", Arial, sans-serif);
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  border: 2px solid transparent;
+}
+.swp-privacy-tile:hover,
+.swp-privacy-tile:focus {
+  background: #443073;
+}
+.swp-privacy-tile-active {
+  background: #8d4ded !important;
+  border: 2px solid #e55aff !important;
+  box-shadow: 0 2px 16px #e55aff29;
+  color: #fff !important;
+}
+
+.swp-privacy-tile-radio {
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
+}
+.swp-privacy-tile-label {
+  font-weight: 600;
+  font-size: 17px;
+  color: #fff;
+  letter-spacing: 0.015em;
+}
+.swp-privacy-tile-desc {
+  color: #a089f7;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  margin-top: 2px;
+}
+
+.swp-content-area {
+  width: 100%;
+  max-width: 338px;
+  align-self: center;
+}
+
+.swp-field-error {
+  color: #ff80ff;
+  margin-top: 7px;
+  font-size: 14px;
+}
+
+/* CTA Button in modal */
+.swp-modal-card .scener-btn,
+.swp-modal-card .scener-btn-cta {
+  border-radius: 41px;
+  font-size: 1.08rem;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #c800e3 65%, #e55aff 100%);
+  border: none;
+  box-shadow: 0 2.5px 13px #e55aff28;
+  font-weight: bold;
+}
+.swp-modal-card .scener-btn:active,
+.swp-modal-card .scener-btn:focus {
+  filter: brightness(1.07);
+  box-shadow: 0 0 0 3px #e55aff44;
+}
+
+/* Responsive for small screens: Button full width/stacked */
+@media (max-width: 500px) {
+  .swp-modal-card .scener-btn,
+  .swp-modal-card .scener-btn-cta {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Misc/focus rings */
+.swp-modal-card :focus-visible {
+  outline: 2px solid #e55aff;
+  outline-offset: 1.5px;
+}

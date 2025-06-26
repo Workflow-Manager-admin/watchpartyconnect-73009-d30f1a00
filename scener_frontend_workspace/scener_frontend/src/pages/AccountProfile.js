@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./AccountProfile.css";
 import Button from "../components/Button";
+import ScheduleWatchPartyModal from "./ScheduleWatchPartyModal";
 
 // PUBLIC_INTERFACE
 export default function AccountProfile() {
   const [tab, setTab] = useState("profile");
+  const [showScheduleModal, setShowScheduleModal] = useState(false);
 
   return (
     <div className="profile-bg">
@@ -61,10 +63,20 @@ export default function AccountProfile() {
                 You have no scheduled watch parties
               </span>
               <div className="profile-body-actions">
-                <Button variant="primary" style={{ marginRight: 8, marginBottom: 6 }}>Schedule a watch party</Button>
+                <Button
+                  variant="primary"
+                  style={{ marginRight: 8, marginBottom: 6 }}
+                  onClick={() => setShowScheduleModal(true)}
+                >
+                  Schedule a watch party
+                </Button>
                 <Button variant="outlined">Get Scener</Button>
               </div>
             </div>
+            <ScheduleWatchPartyModal
+              open={showScheduleModal}
+              onClose={() => setShowScheduleModal(false)}
+            />
           </section>
           {/* Secondary right card/placeholder */}
           <aside className="profile-right-panel">
