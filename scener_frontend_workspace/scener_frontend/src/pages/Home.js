@@ -201,7 +201,7 @@ function Home({ onOpenSignUp }) {
             <span style={{ fontSize: 38, marginRight: 19, color: "#ffd542" }}>{emojiIcon()}</span>
             <div>
               <strong>Group chat &amp; reactions</strong>
-              <p>Text &amp; emoji chat overlays appear live during the movie.</p>
+              <p>Text & emoji chat overlays appear live during the movie.</p>
             </div>
           </div>
           <div className="feature-card" style={{ background: "#22203a", color: "#fff" }}>
@@ -267,7 +267,9 @@ function Home({ onOpenSignUp }) {
               &ldquo;The next best thing to being in the same room. Sync is perfect!&rdquo;
             </blockquote>
             <figcaption>
-              <span style={{ color: "#ffd542" }}>– Jamie, Seattle</span>
+              <span style={{ color: "#ffd542" }}>
+                – Jamie, Seattle
+              </span>
             </figcaption>
           </figure>
           <figure>
@@ -275,7 +277,9 @@ function Home({ onOpenSignUp }) {
               &ldquo;We watched every Sunday during college. Feels like we never left.&rdquo;
             </blockquote>
             <figcaption>
-              <span style={{ color: "#ffd542" }}>– Priya, Austin</span>
+              <span style={{ color: "#ffd542" }}>
+                – Priya, Austin
+              </span>
             </figcaption>
           </figure>
           <figure>
@@ -283,7 +287,9 @@ function Home({ onOpenSignUp }) {
               &ldquo;My long-distance partner and I look forward to movie night every week.&rdquo;
             </blockquote>
             <figcaption>
-              <span style={{ color: "#ffd542" }}>– Marcus, Boston</span>
+              <span style={{ color: "#ffd542" }}>
+                – Marcus, Boston
+              </span>
             </figcaption>
           </figure>
         </div>
