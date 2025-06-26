@@ -1,0 +1,4 @@
+{
+    "command": "npm install && npx tsc --noEmit && npm test -- --ci",
+    "working_directory": "/home/kavia/workspace/code-generation/watchpartyconnect-73009-d30f1a00/scener_frontend_workspace/scener_frontend"
+}
