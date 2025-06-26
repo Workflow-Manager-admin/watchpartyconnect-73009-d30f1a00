@@ -4,3 +4,6 @@ export { default as CreateAccountModal } from "./CreateAccountModal";
 export { default as AccountProfile } from "./AccountProfile";
 export { default as HomeOnScroll } from "./HomeOnScroll";
 export { default as ScheduleWatchPartyModal } from "./ScheduleWatchPartyModal";
+export { default as StreamingServiceModal } from "./StreamingServiceModal";
+export { default as AfterSchedulingModal } from "./AfterSchedulingModal";
+export { default as ProfileAfterScheduling } from "./ProfileAfterScheduling";

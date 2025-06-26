@@ -1,0 +1,161 @@
+.after-modal-overlay {
+  position: fixed;
+  z-index: 2200;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(37, 24, 80, 0.84);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+.after-modal-card {
+  background: #251850;
+  border-radius: 18px;
+  width: 440px;
+  max-width: 95vw;
+  min-width: 250px;
+  box-shadow: 0 8px 48px #38256c90;
+  padding: 32px 24px 24px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 520px) {
+  .after-modal-card { padding: 17px 3vw 20px 3vw; width:96vw; min-width:0; }
+  .after-modal-heading { font-size: 1.14rem; }
+}
+.after-modal-close-btn {
+  position: absolute;
+  right: 18px;
+  top: 20px;
+  font-size: 2rem;
+  color: #fff;
+  background: none;
+  border: none;
+  opacity: 0.55;
+  cursor: pointer;
+  transition: color 0.13s;
+}
+.after-modal-close-btn:hover, .after-modal-close-btn:focus { color: #f82ffe; }
+.after-modal-heading {
+  color: #fff;
+  font-weight: 700;
+  font-size: 23px;
+  margin-bottom: 23px;
+  text-align: center;
+}
+.after-modal-party-card {
+  width: 100%;
+  background: #322362;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px #f82ffe23;
+  margin-bottom: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 12px 8.5px 12px;
+}
+.after-party-image {
+  width: 100%;
+  height: 110px;
+  margin-top: 9px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #19113a;
+}
+.after-party-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.after-party-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+.after-party-meta {
+  color: #B6B0CB;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.after-edit-btn {
+  font-size: 15px !important;
+  margin-left: 10px !important;
+  min-height: 27px !important;
+}
+.after-modal-divider {
+  width: 100%;
+  height: 1px;
+  background: #38256C;
+  margin: 16px 0;
+  border-radius: 3px;
+  opacity: 0.9;
+}
+.after-invite-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 7px;
+}
+.after-invite-label {
+  color: #B6B0CB;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 8px;
+}
+.after-invite-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+.after-invite-btn {
+  border-radius: 27px !important;
+  font-size: 15px !important;
+  padding: 6px 22px !important;
+}
+.after-modal-actions {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+}
+.after-modal-done-btn {
+  border-radius: 33px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+  background: linear-gradient(90deg, #aa53f6 65%, #f82ffe 120%);
+  color: #fff;
+}
+.after-ghost-edit {
+  margin-top: 12px;
+  align-self: flex-start;
+}
+.after-edit-link {
+  background: none;
+  border: none;
+  color: #f82ffe;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: underline;
+  padding: 0;
+  cursor: pointer;
+  margin: 0;
+  transition: color .14s;
+}
+.after-edit-link:hover, .after-edit-link:focus { color: #fff; }
