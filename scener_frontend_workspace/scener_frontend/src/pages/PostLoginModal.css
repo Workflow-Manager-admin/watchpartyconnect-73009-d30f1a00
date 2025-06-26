@@ -1,0 +1,114 @@
+.modal-bg-blur {
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--modal-bg-overlay, #1B0042);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.post-login-modal-card {
+  background: linear-gradient(135deg, #2A0757 0%, #1B0042 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  padding: 32px 38px 28px 38px;
+  min-width: 262px;
+  max-width: 96vw;
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+@media (max-width: 600px) {
+  .post-login-modal-card {
+    padding: 18px 5vw;
+    width: 96vw;
+    min-width: 0;
+  }
+  .post-login-title { font-size: 1.7rem; }
+}
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 2rem;
+  color: var(--modal-text, #fff);
+  background: none;
+  border: none;
+  opacity: 0.54;
+  cursor: pointer;
+  transition: color 0.18s;
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus { color: var(--modal-accent, #D000FF); opacity: 1; }
+.post-login-title {
+  color: var(--modal-text, #fff);
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.post-login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.post-login-input {
+  background: var(--modal-input-bg, #22094D);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1rem;
+  padding: 14px 15px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.post-login-input:focus {
+  box-shadow: 0 0 0 2.5px var(--modal-accent, #D000FF);
+  outline: none;
+}
+.post-login-forgot-row {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 6px;
+  margin-top: -14px;
+}
+.post-login-forgot {
+  color: var(--modal-text-secondary, #B99FE0);
+  font-size: 0.97rem;
+  transition: color 0.16s, text-decoration 0.1s;
+  text-decoration: none;
+  cursor: pointer;
+}
+.post-login-forgot:hover,
+.post-login-forgot:focus { color: var(--modal-accent, #D000FF); text-decoration: underline; }
+.post-login-secondary {
+  margin-top: 25px;
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+}
+.accent-link {
+  color: var(--modal-accent, #D000FF);
+  font-weight: 600;
+  margin-left: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.accent-link:hover,
+.accent-link:focus { text-decoration: underline; color: #e100ff; }
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  top: auto;
+  white-space: nowrap;
+}
