@@ -1,104 +1,501 @@
-/* CSS Variables for Theme Management */
+/* HOME SCREEN DESIGN SYSTEM - Scener */
+
+/* Color Variables */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --bg-canvas: #18103a;
+  --nav-bg: #1c174b;
+  --primary-text: #ffffff;
+  --secondary-text: #e6e6f7;
+  --button-cta: #e636ea;
+  --button-cta-hover: #c627c7;
+  --decor-accent: #865fff;
+  --footer-bg: #24195a;
+  --logo-gray: #8c8ca0;
+  --font-main: "Helvetica Neue", Arial, sans-serif;
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
-}
-
-.App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+/* Background and geometric accent decorations */
+.home-bg {
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: linear-gradient(120deg, var(--bg-canvas) 75%, var(--decor-accent) 120%);
+  position: relative;
+  font-family: var(--font-main);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+/*************************
+ 1. NAVIGATION BAR
+*************************/
+.scener-navbar {
+  width: 100vw;
+  min-width: 100%;
+  height: 64px;
+  background-color: var(--nav-bg);
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  z-index: 103;
+  box-shadow: 0 2px 16px 0 #06091a14;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+.nav-brand {
+  font-size: 1.35rem;
+  color: var(--primary-text);
+  font-family: var(--font-main);
+  font-weight: 700;
+  letter-spacing: .014em;
+  margin-left: 2px;
+  user-select: none;
+}
+.nav-links {
+  display: flex;
+  margin-left: 48px;
+  flex: 1 1 auto;
+  gap: 32px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
+}
+.nav-links a {
+  color: var(--primary-text);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  opacity: 0.97;
+  padding: 0 2px;
+  transition: color .22s;
+}
+.nav-links a:hover, .nav-links a:focus {
+  color: var(--button-cta);
+  text-shadow: 0 1px 8px #e636ea33;
+}
+.nav-right {
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+}
+.nav-cta {
+  margin-left: 0;
+}
+
+/*************************
+ 2. HERO SECTION
+*************************/
+.main-hero-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  padding: 112px 72px 56px 72px;
+  box-sizing: border-box;
+  min-height: 68vh;
+  gap: 54px;
+  margin-top: 64px;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+/* HERO LEFT: Laptop Mockup Illustration */
+.hero-left {
+  flex: 0 0 490px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 340px;
+}
+.laptop-mockup {
+  width: 460px;
+  height: 290px;
+  background: transparent;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.theme-toggle {
+.laptop-frame {
+  width: 100%;
+  height: 100%;
+  background: #191a2c;
+  border-radius: 12px 12px 24px 24px;
+  box-shadow: 0 8px 48px -8px #1e032888, 0 2px 8px #07032333;
+  border: 3.5px solid #312c5d;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.screen-area {
+  background: #252253;
+  border-radius: 10px 10px 10px 10px;
+  width: 97%;
+  height: 74%;
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
+  left: 6px;  /* centered inside frame */
+  top: 8px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 2px 16px #01001450;
+}
+
+/* Video Scene Section */
+.video-content {
+  flex: 3.5;
+  padding: 18px 10px 0 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.video-thumbnail {
+  width: 170px;
+  height: 90px;
+  background: linear-gradient(123deg, #e636ea44 20%, #865fff99 95%);
+  border-radius: 10px;
+  box-shadow: 0 3px 7px #0008, 0 2px 12px #e636ea36;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.play-icon {
+  font-size: 3.8rem;
+  color: #fff;
+  opacity: 0.93;
+  text-shadow: 0 1px 14px #e636eaaa,0 4px 20px #865fff44;
+}
+.media-controls {
+  width: 88%;
+  margin-top: 12px;
+}
+.progress-bar {
+  width: 92%;
+  height: 7px;
+  background: #312c5d;
+  border-radius: 3.5px;
+  margin-bottom: 7px;
+  overflow: hidden;
+}
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #e636ea 50%, #865fff 100%);
+  border-radius: 3.5px;
+}
+.control-buttons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 1.28em;
+}
+.ctrl {
+  color: var(--button-cta);
+  opacity: 0.78;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 50%;
+  padding: 2px 6px;
+  transition: background .18s;
+}
+.ctrl:hover, .ctrl:focus {
+  background: #865fff44;
+  color: #fff;
+  outline: none;
+}
+
+/* Chat/Sidebar Section */
+.chat-sidebar {
+  flex: 1.42;
+  background: #1c1540;
+  border-left: 2.2px solid #312c5d99;
+  border-radius: 0 10px 10px 0;
+  padding: 11px 7px 5px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 98px;
+}
+.chat-title {
+  color: var(--button-cta);
+  font-size: 1rem;
+  font-weight: 600;
+  padding-bottom: 7px;
+}
+.chat-bubble {
+  color: var(--primary-text);
+  background: #312c5d77;
+  border-radius: 10px 10px 13px 3px;
+  padding: 7px 13px;
+  font-size: 0.98rem;
+  margin-bottom: 7px;
+  max-width: 120px;
+  word-break: break-word;
+}
+.me {
+  background: #e636ea44;
+  color: #fff;
+  font-weight: 600;
+}
+.chat-users {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 7px;
+}
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #865fff 77%, #e636ea 100%);
+  color: #fff;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  font-size: 0.98rem;
+  font-weight: bold;
+  margin-right: 2px;
+  box-shadow: 0 1.5px 8px #865fff24;
+}
+
+/* Media mockup top "bar" accent */
+.media-topbar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 99%;
+  height: 8px;
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(90deg, #865fff 0%, #e636ea 100%);
+  opacity: 0.75;
+  z-index: 1;
+}
+
+/* Laptop "base" (bottom) */
+.laptop-base {
+  position: absolute;
+  bottom: -18px;
+  left: 13%;
+  width: 74%;
+  height: 18px;
+  border-radius: 0 0 16px 16px;
+  background: #120a27;
+  box-shadow: 0 9px 24px #1c174b50;
+}
+
+/* HERO RIGHT: Headline & CTAs */
+.hero-right {
+  flex: 1.18;
+  max-width: 410px;
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+.hero-headline {
+  color: var(--primary-text);
+  font-size: 2.93rem;
+  line-height: 1.13;
+  font-weight: 700;
+  margin-bottom: 18px;
+  margin-top: 8px;
+  letter-spacing: 0.01em;
+}
+.hero-subheadline {
+  color: var(--secondary-text);
+  font-size: 1.23rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+  margin-top: 3px;
+}
+.hero-description {
+  color: var(--secondary-text);
+  font-size: 1.09rem;
+  font-weight: 400;
+  margin-bottom: 24px;
+  margin-top: 2px;
+  line-height: 1.45;
+}
+.hero-button-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin-top: 9px;
+}
+
+/*************************
+ 3. CTA BUTTONS
+*************************/
+.cta-btn {
+  background: linear-gradient(93deg, var(--button-cta) 65%, var(--decor-accent) 100%);
+  color: #fff;
+  font-size: 1.12rem;
+  padding: 12px 34px;
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+  border-radius: 40px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px #e636ea26;
+  transition: background .19s, box-shadow .19s, outline .13s;
+  margin-bottom: 2px;
+  outline: none;
+  letter-spacing: 0.013em;
+  text-transform: none;
+  z-index: 1;
+}
+.cta-btn:hover,
+.cta-btn:focus {
+  background: linear-gradient(93deg, var(--button-cta-hover) 60%, var(--decor-accent) 100%);
+  box-shadow: 0 6px 32px #865fff44;
+}
+.cta-btn.secondary {
+  background: transparent;
+  color: var(--primary-text);
+  border: 2.2px solid #fff;
+  box-shadow: none;
+  font-weight: 600;
+}
+.cta-btn.secondary:hover,
+.cta-btn.secondary:focus {
+  background: #312c5d44;
+  color: var(--button-cta);
+  border-color: var(--button-cta);
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+/*************************
+ 4. LOGO FOOTER STRIP
+*************************/
+.logo-footer {
+  width: 100vw;
+  background: var(--footer-bg);
+  position: relative;
+  padding: 0 0;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 -2px 24px #18103a60;
+  margin-top: 40px;
+}
+.logo-footer-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 1150px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 48px;
+  padding: 20px 0;
+}
+.footer-logo-item {
+  opacity: 0.76;
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.footer-logo-item svg, .footer-logo-item img {
+  display: block;
+  height: 30px;
+  width: auto;
+  max-width: 90px;
+  filter: grayscale(1) brightness(0.9) contrast(0.75);
+  color: var(--logo-gray);
+  margin: 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/*************************
+ 5. RESPONSIVE DESIGN
+*************************/
+/* On small tablets and below, stack hero columns vertically and adjust nav/footer */
+@media (max-width: 900px) {
+  .main-hero-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 82px 10vw 36px 10vw;
+    gap: 38px;
   }
-  to {
-    transform: rotate(360deg);
+  .hero-left, .hero-right {
+    width: 100%;
+    min-width: 0;
+    max-width: 100vw;
+    margin: 0 auto 0 auto;
+    justify-content: center;
+  }
+  .laptop-mockup {
+    width: 84vw;
+    min-width: 180px;
+    height: 33vw;
+    max-width: 430px;
+    min-height: 180px;
+  }
+  .logo-footer-inner {
+    gap: 20px;
+    padding: 16px 0;
+    flex-wrap: wrap;
   }
 }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+@media (max-width: 700px) {
+  .scener-navbar {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 10px;
+    height: auto;
+    min-height: 44px;
+    position: relative;
   }
+  .nav-links {
+    gap: 18px;
+    margin-left: 12px;
+    flex: unset;
+    justify-content: flex-start;
+  }
+  .main-hero-section {
+    padding: 70px 2vw 16px 2vw;
+    gap: 22px;
+  }
+  .hero-headline {
+    font-size: 2.05rem;
+  }
+}
+
+/* On mobile screens, logos collapse into a scrollable row */
+@media (max-width: 500px) {
+  .logo-footer-inner {
+    max-width: none;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 13px 0 11px 0;
+  }
+  .footer-logo-item {
+    min-width: 49px;
+    padding: 0 8px;
+  }
+}
+
+/* Font smoothing & baseline resets */
+body, html, .home-bg {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background: var(--bg-canvas);
+  color: var(--primary-text);
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
